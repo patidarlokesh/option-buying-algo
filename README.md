@@ -84,18 +84,18 @@ A Python-based intraday options trading bot using EMA, RSI, Supertrend
 
 # Trade log to Excel
 
-   def log_to_excel(trade_data):
-    df_new = pd.DataFrame([trade_data])
-    try:
-        wb = xw.Book(excel_file)
-        sht = wb.sheets[sheet_name]
-        existing_data = sht.range('A1').expand().value
-        df_existing = pd.DataFrame(existing_data[1:], columns=existing_data[0])
-        df_updated = pd.concat([df_existing, df_new], ignore_index=True)
-        sht.clear_contents()
-        sht.range("A1").value = [df_updated.columns.tolist()] + df_updated.values.tolist()
-    except Exception:
-        df_new.to_excel(excel_file, sheet_name=sheet_name, index=False)
+       def log_to_excel(trade_data):
+        df_new = pd.DataFrame([trade_data])
+        try:
+            wb = xw.Book(excel_file)
+            sht = wb.sheets[sheet_name]
+            existing_data = sht.range('A1').expand().value
+            df_existing = pd.DataFrame(existing_data[1:], columns=existing_data[0])
+            df_updated = pd.concat([df_existing, df_new], ignore_index=True)
+            sht.clear_contents()
+            sht.range("A1").value = [df_updated.columns.tolist()] + df_updated.values.tolist()
+        except Exception:
+            df_new.to_excel(excel_file, sheet_name=sheet_name, index=False)
 
 ## Usage
 ```bash
