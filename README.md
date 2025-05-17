@@ -28,7 +28,7 @@ A Python-based intraday options trading bot using EMA, RSI, Supertrend
 
 
 
-- ITM options strike selection
+# ITM options strike selection
 
 -
                     ce_name, pe_name, ce_itm_strike, pe_itm_strike = tsl.ITM_Strike_Selection(Underlying=spot_symbol, Expiry=0, ITM_count=2)
@@ -43,7 +43,7 @@ A Python-based intraday options trading bot using EMA, RSI, Supertrend
                     name = spot_symbol  # or any name you want as the key
                     orderbook[name] = {'options_name': ce_name, 'qty': quantity }
                     
-- Target/SL order placement
+# Target/SL order placement
 
 - entry_orderid = tsl.order_placement(tradingsymbol=orderbook[name]['options_name'], exchange='NFO', quantity=orderbook[name]['qty'], price=0, trigger_price=0, order_type='MARKET', transaction_type='BUY', trade_type='MIS' )
 
@@ -74,7 +74,7 @@ A Python-based intraday options trading bot using EMA, RSI, Supertrend
                     active_trades[spot_symbol] = {'in_position': True, 'entry_price': last_close, 'stop_loss_price': stop_loss_price, 'target_price': target_price, 'entry_order_id': entry_orderid }
 
 
-- Telegram alerts
+# Telegram alerts
 
 - tsl.send_telegram_alert(f" SL HIT for {symbol} at ₹{price}", receiver_chat_id, bot_token)
                 exit_status = "SL HIT"
@@ -82,7 +82,7 @@ A Python-based intraday options trading bot using EMA, RSI, Supertrend
                 tsl.send_telegram_alert(f" TARGET HIT for {symbol} at ₹{price}", receiver_chat_id, bot_token)
                 exit_status = "TARGET HIT"
 
-- Trade log to Excel
+# Trade log to Excel
 
 - def log_to_excel(trade_data):
     df_new = pd.DataFrame([trade_data])
